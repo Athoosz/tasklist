@@ -10,17 +10,17 @@ SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
-    "inter100": require("../assets/fonts/Inter-Thin.ttf"),
-    "inter200": require("../assets/fonts/Inter-ExtraLight.ttf"),
-    "inter300": require("../assets/fonts/Inter-Light.ttf"),
-    "inter400": require("../assets/fonts/Inter-Regular.ttf"),
-    "inter500": require("../assets/fonts/Inter-Medium.ttf"),
-    "inter600": require("../assets/fonts/Inter-SemiBold.ttf"),
-    "inter700": require("../assets/fonts/Inter-Bold.ttf"),
-    "inter800": require("../assets/fonts/Inter-ExtraBold.ttf"),
-    "inter900": require("../assets/fonts/Inter-Black.ttf"),
+    Inter100: require("../assets/fonts/Inter-Thin.ttf"),
+    Inter200: require("../assets/fonts/Inter-ExtraLight.ttf"),
+    Inter300: require("../assets/fonts/Inter-Light.ttf"),
+    Inter400: require("../assets/fonts/Inter-Regular.ttf"),
+    Inter500: require("../assets/fonts/Inter-Medium.ttf"),
+    Inter600: require("../assets/fonts/Inter-SemiBold.ttf"),
+    Inter700: require("../assets/fonts/Inter-Bold.ttf"),
+    Inter800: require("../assets/fonts/Inter-ExtraBold.ttf"),
+    Inter900: require("../assets/fonts/Inter-Black.ttf"),
   });
-  
+
   const onLayoutRootView = useCallback(async () => {
     if (fontsLoaded) {
       // fecha splashscreen
@@ -29,9 +29,13 @@ export default function App() {
   }, [fontsLoaded]);
 
   return fontsLoaded ? (
-    <ScrollView onLayout={onLayoutRootView} keyboardShouldPersistTaps="handled">
-      <StatusBar translucent={false} style="dark" backgroundColor="transparent" />
+    <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+      <StatusBar
+        translucent={false}
+        style="dark"
+        backgroundColor="transparent"
+      />
       <TaskListScreen />
-    </ScrollView>
+    </View>
   ) : null;
 }
